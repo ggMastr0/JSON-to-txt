@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 # usage:
-#   python3 json_to_txt.py input.json output.txt
-#   python3 json_to_txt.py input.txt  output.txt   (se dentro c'è comunque JSON)
+#   python3 json_to_txt.py input.json output.txt (si può anche dare in input un file txt a patto che il contenuto sia comunque format JSON)
 
 import json
 import re
@@ -12,7 +11,7 @@ def load_json_text(path: Path) -> str:
     return path.read_text(encoding="utf-8")
 
 def parse_json(raw: str):
-    # se hai incollato in .txt con eventuale sporcizia prima/dopo, prova a isolare il blocco JSON
+    # se il file è .txt e contiene altro oltre alla parte JSON pulisce la 'sporcizia'
     raw = raw.strip()
     if not raw.startswith("{"):
         i = raw.find("{")
